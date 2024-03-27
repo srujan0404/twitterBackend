@@ -62,7 +62,12 @@ export const Login = async (req, res) => {
             userId: user._id
         }
         const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET, { expiresIn: "1d" });
-        return res.status(201).cookie("token", token, { expiresIn: "1d" }).json({
+        return res.status(201).cookie("token", token, { 
+            expiresIn: "1d", 
+            httpOnly: true, 
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'None' 
+        }).json({
             message: `Welcome back ${user.name}`,
             user,
             success: true

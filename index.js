@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import userRoute from "./routes/userRoute.js";
 import tweetRoute from "./routes/tweetRoute.js";
 import cors from "cors";
+import morgan from "morgan";
 
 dotenv.config({
     path:".env"
@@ -24,6 +25,8 @@ const corsOptions = {
   origin: ["https://twitter-frontend-teal-one.vercel.app", "http://localhost:3000"], 
   credentials: true,
 };
+
+app.use(morgan('combined'));
 
 app.use(cors(corsOptions));
 
