@@ -21,7 +21,7 @@ app.use(express.json());
 
 app.use(cookieParser());
 const corsOptions = {
-  origin: "https://twitter-frontend-teal-one.vercel.app",
+  origin: ["https://twitter-frontend-teal-one.vercel.app", "http://localhost:3000"], 
   credentials: true,
 };
 
